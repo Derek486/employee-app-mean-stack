@@ -1,9 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ItemComponent } from './item/item.component';
+import { EmployeesPage } from './pages/employees.page';
+import { EmployeesPageEdit } from './pages/employees-edit.page';
 
 const routes: Routes = [
-  { path: 'items', component: ItemComponent }
+  {
+    path: '',
+    redirectTo: '/employees',
+    pathMatch: 'full'
+  },
+  {
+    path: 'employees',
+    component: EmployeesPage
+  },
+  {
+    path: 'employees/:idEmployee',
+    component: EmployeesPageEdit
+  },
 ];
 
 @NgModule({

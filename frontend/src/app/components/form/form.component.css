@@ -1,0 +1,72 @@
+.form-parent {
+    padding: 1rem;
+    box-shadow: 0px 5px 15px 1px #3a3a3a;
+    border: none;
+    border-radius: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.form__group input {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 2px solid rgba(98, 98, 98, 0.61);
+    transition: .2s ease-in-out;
+    padding: .5rem 1rem;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+.form__group div {
+    color: red;
+}
+
+.form__group input:focus {
+    outline: none;
+    border-bottom-color: black;
+}
+
+.form__title {
+    text-align: center;
+    user-select: none;
+}
+
+.form__submit {
+    display: flex;
+    flex-direction: column;
+    row-gap: .6rem;
+}
+
+.form__submit .button {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(42, 41, 41, 0.975);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .2s ease-in;
+    border: none;
+}
+
+.form__submit .button:hover {
+    background-color: rgba(0, 0, 0, 0.975);
+
+}
+
+.form__submit .button--danger {
+    background-color: rgb(188, 48, 48);
+}
+
+.form__submit .button--danger:hover {
+    background-color: rgb(200, 16, 16);
+}

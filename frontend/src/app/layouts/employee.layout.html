@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between px-4">
+	<a class="navbar-brand fs-3" [routerLink]="['/employees']" routerLinkActive="router-link-active" >Employee App</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<ng-content select="[search]"></ng-content>
+</nav>
+
+<div class="container">
+	<div class="row p-4 @yield('class-center')">
+		<ng-content select="[body]"></ng-content>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<form [formGroup]="formData" (submit)="submit($event)" enctype="multipart/form-data" class="d-flex flex-column">
+  <div class="input-group mb-3 d-flex flex-column">
+    <div class="d-flex">
+      <label for="firstName" class="input-group-text col-3">Nombres</label>
+      <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="Ingrese los nombres" class="form-control p-3" required>
+    </div>
+    <div *ngIf="formData.get('firstName')?.touched && formData.get('firstName')?.invalid" class="text-danger">
+      <small *ngIf="hasError('firstName', 'required')">El nombre es obligatorio.</small>
+      <small *ngIf="getErrorApi('firstName')">{{ getErrorApi('firstName') }}</small>
+    </div>
+  </div>
+  
+  <div class="input-group mb-3 d-flex flex-column">
+    <div class="d-flex">
+      <label for="lastName" class="input-group-text col-3">Apellidos</label>
+      <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="Ingrese los apellidos" class="form-control p-3" required>
+    </div>
+    <div *ngIf="formData.get('lastName')?.touched && formData.get('lastName')?.invalid" class="text-danger">
+      <small *ngIf="hasError('lastName', 'required')">El apellido es obligatorio.</small>
+      <small *ngIf="getErrorApi('lastName')">{{ getErrorApi('lastName') }}</small>
+    </div>
+  </div>
+  
+  <div class="input-group mb-3 d-flex flex-column">
+    <div class="d-flex">
+      <label for="age" class="input-group-text col-3">Edad</label>
+      <input type="number" id="age" name="age" formControlName="age" placeholder="Ingrese la edad" class="form-control p-3" required>
+    </div>
+    <div *ngIf="formData.get('age')?.touched && formData.get('age')?.invalid" class="text-danger">
+      <small *ngIf="hasError('age', 'required')">La edad es obligatoria.</small>
+      <small *ngIf="getErrorApi('age')">{{ getErrorApi('age') }}</small>
+    </div>
+  </div>
+  
+  <div class="input-group mb-3 d-flex flex-column">
+    <div class="d-flex">
+      <label for="salary" class="input-group-text col-3">Salario</label>
+      <input type="number" id="salary" name="salary" formControlName="salary" placeholder="Ingrese el salario" class="form-control p-3" min="0" step="0.01" required>
+    </div>
+    <div *ngIf="formData.get('salary')?.touched && formData.get('salary')?.invalid" class="text-danger">
+      <small *ngIf="hasError('salary', 'required')">El salario es obligatorio.</small>
+      <small *ngIf="getErrorApi('salary')">{{ getErrorApi('salary') }}</small>
+    </div>
+  </div>
+
+  <div class="input-group mb-3 d-flex flex-column">
+    <div class="d-flex">
+      <label for="image" class="input-group-text col-3">Imagen</label>
+      <input type="file" id="image" name="image" (change)="onFileSelected($event)" class="form-control p-3">
+    </div>
+  </div>
+
+  <div *ngIf="employee" class="d-flex">
+    <img class="w-25 mx-auto" src="{{IMAGE_URL + employee.imageUrl}}" alt="image-employee">
+  </div>
+  
+  <button type="submit" class="btn btn-dark text-center mt-2">
+    {{ employee ? 'Actualizar empleado' : 'Guardar empleado' }}
+  </button>
+  
+  <a *ngIf="employee" [routerLink]="['/employees']" class="btn btn-primary text-center mt-2">
+    Volver
+  </a>
+</form>
