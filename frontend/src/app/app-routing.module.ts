@@ -5,11 +5,6 @@ import { EmployeesPageEdit } from './pages/employees-edit.page';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/employees',
-    pathMatch: 'full'
-  },
-  {
     path: 'employees',
     component: EmployeesPage
   },
@@ -17,10 +12,15 @@ const routes: Routes = [
     path: 'employees/:idEmployee',
     component: EmployeesPageEdit
   },
+  {
+    path: '**',
+    redirectTo: 'employees',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class 
+AppRoutingModule { }
