@@ -14,16 +14,16 @@ const uuid = require('uuid')
  */
 
 const saveEmployee = async (req, res) => {
-    try {
-        const { firstName, lastName, age, salary } = req.body;
+	try {
+		const { firstName, lastName, age, salary } = req.body;
 		let imageName = null
 		if (req.file) {
 			imageName = uuid.v4() + '.png'
 			const imagePath = path.join(__dirname, '../..', 'public', 'employees', imageName);
 			fs.writeFile(imagePath, req.file.buffer, (err) => {
 				if (err) {
-                    throw err;
-                }
+					throw err;
+				}
 			});
 		}
 		const newEmployee = new Employee({
@@ -35,9 +35,9 @@ const saveEmployee = async (req, res) => {
 		});
 		await newEmployee.save();
 		return res.json(newEmployee);
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
+	} catch (error) {
+		return res.status(500).json({ message: error.message });
+	}
 }
 
 const deleteEmployee = async (req, res) => {
@@ -77,7 +77,7 @@ const showEmployee = async (req, res) => {
 const editEmployee = async (req, res) => {
 	try {
 		const { firstName, lastName, age, salary } = req.body;
-		let imageName = null
+		let imageName = req.employee.imageUrl
 		if (req.file) {
 			imageName = uuid.v4() + '.png'
 			const imagePath = path.join(__dirname, '../..', 'public', 'employees', imageName);
@@ -91,8 +91,8 @@ const editEmployee = async (req, res) => {
 			}
 			fs.writeFile(imagePath, req.file.buffer, (err) => {
 				if (err) {
-                    throw err;
-                }
+					throw err;
+				}
 			});
 		}
 		await Employee.updateOne({
